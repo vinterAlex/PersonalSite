@@ -1,0 +1,129 @@
+﻿<!--
+<div id="mySidenav" class="sidenav">
+    <a id="home"> @Html.ActionLink("Home", "Index", "Home")       </a>
+    <a id="about"> @Html.ActionLink("About", "About", "Home")      </a>
+    <a id="contact"> @Html.ActionLink("Contact", "Contact", "Home")  </a>
+</div>
+    -->
+<!-- /#sidebar-wrapper -->
+<!-- Page Content -->
+
+
+
+
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,500i,700,800i" rel="stylesheet">
+    <link href="~/Content/customSideNav.css" rel="stylesheet" />
+</head>
+<body>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.navbar-light .dmenu').hover(function () {
+                $(this).find('.sm-menu').first().stop(true, true).slideDown(150);
+            }, function () {
+                $(this).find('.sm-menu').first().stop(true, true).slideUp(105)
+            });
+        });
+
+            $(function(){
+        $('a').each(function(){
+            if ($(this).prop('href') == window.location.href) {
+                $(this).addClass('active'); $(this).parents('li').addClass('active');
+            }
+        });
+    });
+    </script>
+    <style>
+
+       
+        .navbar .active{
+            
+                
+            opacity:0.8;
+            transform: scale(1.2);
+            font-weight:bold;
+            transition: all .3s ease-in-out; 
+        }
+
+        
+         /**test*/
+
+    </style>
+
+
+    <nav class="navbar navbar-expand-sm   navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Index","Home")">Home<span class="sr-only">(current)</span></a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("About","Home")">About </a>
+                </li>
+                <!--
+    <li class="nav-item">
+        <a class="nav-link" href="@Url.Action("Contact","Home")">Contact</a>
+    </li>
+        -->
+
+                <li class="nav-item dropdown dmenu">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        Projects
+                    </a>
+                    <div class="dropdown-menu sm-menu">
+                        <a class="dropdown-item" href="@Url.Action("Index", "Movies")"> Movies / Gallery</a>
+                        <a class="dropdown-item" href="#">service 2</a>
+                        <a class="dropdown-item" href="#">service 3</a>
+                    </div>
+                </li>
+
+
+                <!-- <li class="nav-item dropdown dmenu">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Dropdown link
+      </a>
+      <div class="dropdown-menu sm-menu">
+        <a class="dropdown-item" href="#">Link 1</a>
+        <a class="dropdown-item" href="#">Link 2</a>
+        <a class="dropdown-item" href="#">Link 3</a>
+        <a class="dropdown-item" href="#">Link 4</a>
+        <a class="dropdown-item" href="#">Link 5</a>
+        <a class="dropdown-item" href="#">Link 6</a>
+      </div>
+    </li> -->
+            </ul>
+            <div class="social-part">
+                <a href="http://www.facebook.com"><i class="fa fa-facebook" aria-hidden="false"></i></a>
+                <a href="http://www.twitter.com"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                <a href="http://www.instagram.com"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    @RenderBody()
+
+</body>
+
+</html>

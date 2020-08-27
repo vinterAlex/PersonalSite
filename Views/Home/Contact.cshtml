@@ -1,0 +1,17 @@
+﻿@model string
+@{
+    ViewData["Title"] = "Email using Gmail";
+}
+
+<div>
+    <h1>@ViewData["Title"]</h1>
+    <p class="alert-danger">@Model</p>
+    <form method="post">
+        <input type="text" name="name" required maxlength="50" autocomplete="off" placeholder="your name" /><br />
+        <input type="email" name="email" required autocomplete="off" placeholder="your email" /><br />
+        <textarea name="message" required placeholder="your message"></textarea><br />
+        <input type="checkbox" name="ishtml" value="yes" />HTML?<br />
+        <button type="submit">Send</button>
+        @Html.AntiForgeryToken()
+    </form>
+</div>

@@ -1,0 +1,158 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<PersonalSite.Models.Movies>
+
+@*
+    @model IEnumerable<PersonalSite.Models.Movies>
+*@
+
+
+<title>Movies List</title>
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+<head>
+    <!--<link href="~/Content/GalleryGridStyle.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        -->
+</head>
+<style>
+
+
+    body, html {
+        height: 100%;
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background-image: linear-gradient(to right,#000046,#1CB5E0);
+        background-repeat: inherit;
+        background-size: cover;
+    }
+
+    .bg-image {
+        /* The image used */
+        /* Add the blur effect */
+        filter: blur(8px);
+        -webkit-filter: blur(8px);
+        /* Full height */
+        height: 100%;
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+
+    /* Position text in the middle of the page/image */
+    .bg-text {
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+        color: white;
+        font-weight: bold;
+        border: 2px solid #f1f1f1;
+        text-align: center;
+    }
+
+
+
+
+    .rate_number {
+        position: relative;
+        text-align: center;
+        color: black;
+    }
+
+    .bottom-left {
+        position: absolute;
+        bottom: 8px;
+        left: 16px;
+    }
+
+    .top-left {
+        position: absolute;
+        top: 8px;
+        left: 16px;
+    }
+
+    .top-right {
+        position: absolute;
+        top: 8px;
+        right: 16px;
+    }
+
+    .bottom-right {
+        position: absolute;
+        bottom: 8px;
+        right: 16px;
+    }
+
+    .centered {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+</style>
+
+
+
+
+
+
+
+<!-- Page Content -->
+<div class="container">
+    <h1 class="font-weight-light text-center text-lg-left mt-4 mb-0" style="color:white">Thumbnail Gallery</h1>
+    <p>
+
+        <a href="@Url.Action("Create", "Movies")" class="btn btn-primary btn-lgt">
+            <img src="~/images/newItem_Button.png" style="height:30px;width:30px;" />
+            <i class="fa fa-plus-circle">
+            </i> Add new item
+        </a>
+    </p>
+
+
+    <hr class="mt-2 mb-5">
+    <!-- PAGINATION PART -->
+    <div class="pagedList">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }),
+    PagedListRenderOptions.PageNumbersOnly)
+    </div>
+    <!-- PAGINATION PART -->
+    <div class="row text-center text-lg-left">
+
+
+
+        @foreach (var item in @Model)
+        {
+            <div class="col-md-3 col-md-4">
+                <div class="d-block mb-4 h-100 ">
+
+
+
+                    <img class="img-fluid img-thumbnail" src="@Url.Content(item.Thumbnail)" alt="Pic here..">
+                    <div class="bg-text">
+                        <h4>@Html.DisplayFor(modelItem => item.Name)</h4>
+
+                        <!-- Yellow star for the rating-->
+                        <div class="rate_number">
+                            <img src="~/images/1star.png" alt="Rating" style="width:20%;">
+                            <div class="centered">@Html.DisplayFor(modelItem => item.Rate)</div>
+                        </div>
+
+                        <p>@Html.DisplayFor(modelItem => item.Description)</p>
+                    </div>
+
+                </div>
+
+            </div>
+        }
+
+    </div>
+
+</div>
+
+
+
+
+
+
+

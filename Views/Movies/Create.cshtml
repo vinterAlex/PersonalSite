@@ -1,0 +1,66 @@
+﻿
+@model PersonalSite.Models.Movies
+
+<title>Create</title>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<html>
+<head>
+    <title>ADD</title>
+    <link href="~/Content/createItem.css" rel="stylesheet" type="text/css" />
+
+
+
+
+</head>
+<body>
+
+
+    <div class="page-container">
+
+        @using (Html.BeginForm("Create", "Movies", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <h1>Add new entry</h1>
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "Name", @name = "name", @placeholder = "Enter name" } })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            <hr />
+
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "Tele", @name = "tele", @placeholder = "Enter a description" } })
+            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            <!-- <input type="text" name="tele" class="Tele" placeholder="Number Phone"> -->
+
+            @Html.LabelFor(model => model.Rate, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => model.Rate, new { htmlAttributes = new { @class = "Email", @name = "email", @type = "number", @min = "0", @max = "10", @placeholder = "Rate from 1 to 10" } })
+            @Html.ValidationMessageFor(model => model.Rate, "", new { @class = "text-danger" })
+            <!-- <input type="text" name="email" class="Email" placeholder="Email"> -->
+
+            @Html.LabelFor(model => model.Thumbnail, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.ValidationMessageFor(model => model.Thumbnail, "", new { @class = "text-danger" })
+            @Html.TextBox("UploadedImage", "", new { type = "File" })
+            <!-- <input type="password" name="password" class="Address" placeholder="password"> -->
+
+            <!-- <input type="submit" value="Create" name="submit"class="btn btn-default" /> -->
+            <button type="submit" value="Add" name="submit">Submit</button>
+
+
+            <a href="@Url.Action("Index", "Movies")" class="btn btn-default back_button">
+                <img src="~/images/backbutton.png" style="height:20px;width:20px;" />
+                <i class="fa fa-plus-circle">
+                </i> Back to list
+            </a>
+        }
+    </div>
+    <!-- ############################## -->
+    <!--############################ -->
+
+
+
+
+</body>
+</html>
